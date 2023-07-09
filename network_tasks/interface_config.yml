@@ -1,0 +1,68 @@
+# Playbook to configure the interfaces on routers
+
+- hosts: R1
+  gather_facts: False
+
+  tasks:
+    - name: Loopback Interface and IP Address Config on R1 (Lo0)
+      cisco.ios.ios_l3_interfaces:
+        config:
+        - name: Loopback0
+          ipv4:
+          - address: 192.168.6.1 255.255.255.0
+          ipv6:
+          - address: 2001:DB8:CAFE:6::1/64
+    - name: Loopback Interface and IP Address Config on R1 (Lo1)
+      cisco.ios.ios_l3_interfaces:
+        config:
+        - name: Loopback1 
+          ipv4:
+          - address: 192.168.1.1 255.255.255.0
+          ipv6:
+          - address: 2001:DB8:CAFE:1::1/64
+        state: replaced
+
+- hosts: R2
+  gather_facts: False
+
+  tasks:
+    - name: Loopback Interface and IP Address Config on R2
+      cisco.ios.ios_l3_interfaces:
+        config:
+        - name: Loopback0
+          ipv4:
+          - address: 192.168.3.1 255.255.255.0
+          ipv6:
+          - address: 2001:DB8:CAFE:3::1/64
+
+        state: replaced
+
+- hosts: R3
+  gather_facts: False
+
+  tasks:
+    - name: Loopback Interface and IP Address Config on R3
+      cisco.ios.ios_l3_interfaces:
+        config:
+        - name: Loopback0
+          ipv4:
+          - address: 192.168.5.1 255.255.255.0
+          ipv6:
+          - address: 2001:DB8:CAFE:5::1/64
+
+        state: replaced
+  
+  - hosts: R4
+  gather_facts: False
+
+  tasks:
+    - name: Loopback Interface and IP Address Config
+      cisco.ios.ios_l3_interfaces:
+        config:
+        - name: Loopback0
+          ipv4:
+          - address: 192.168.99.1 255.255.255.0
+          ipv6:
+          - address: 2001:DB8:CAFE:99:1::1/64
+   
+        state: replaced
