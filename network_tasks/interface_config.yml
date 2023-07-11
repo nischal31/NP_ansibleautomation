@@ -52,7 +52,7 @@
 
         state: replaced
   
-  - hosts: R4
+- hosts: R4
   gather_facts: False
 
   tasks:
