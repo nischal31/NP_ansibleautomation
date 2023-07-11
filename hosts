@@ -18,3 +18,4 @@ routers:
       ansible_become: yes
       ansible_become_method: true
       ansible_become_password: cisco
+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
