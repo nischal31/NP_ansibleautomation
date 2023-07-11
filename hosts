@@ -12,7 +12,9 @@ routers:
     vars:
       ansible_connection: network_cli
       ansible_network_os: ios
-      ansible_user: "{{username}}"
-      ansible_ssh_pass: "{{passwd}}"
+      ansible_user: admin
+      ansible_ssh_pass: cisco
       ansible_action_warnings: False
-      
+      ansible_become: yes
+      ansible_become_method: true
+      ansible_become_password: cisco
