@@ -1,0 +1,51 @@
+router_id: 192.168.5.1
+rtr_role: internal
+bgp:
+  local_as: 65000
+  neighbors:
+    ipv4:
+     - peer: 192.168.2.101
+       remote_as: 65001
+       ibgp: true
+       update_source: Loopback0
+    ipv6:
+     - peer: "2001:db8:901:beef::1"
+       remote_as: 65101
+       ibgp: true
+       update_source: Loopback0
+
+#R3 interfaces
+interfaces:
+  - ios_if: "GigabitEthernet0/0"
+    desc: "Management"
+    enabled: true
+    ipv4: "192.168.4.1/32"
+    ipv6: "2001:db8:cafe::5/64"
+    ospf:
+      area: "0.0.0.0"
+    ospfv3:
+      area: "0.0.0.0"
+
+  - ios_if: "GigabitEthernet0/1"
+    desc: "To ISP"
+    enabled: true
+    ipv4: "192.168.77.2/24"
+    ipv6: "2001:db8:cafe::5/64"
+    ospf:
+      area: "0.0.0.0"
+    ospfv3:
+      area: "0.0.0.0"
+  
+
+  
+  - ios_if: "Loopback0"
+    desc: "Loopback"
+    enabled: true
+    ipv4: "192.168.5.1/24"
+    ipv6: "2001:db8:CAFE:5::1/64"
+    ospf:
+      area: "0.0.0.0"
+      passive: true
+    ospfv3:
+      area: "0.0.0.0"
+      passive: true

@@ -1,0 +1,100 @@
+router_id: 192.168.1.1
+rtr_role: edge
+bgp:
+  local_as: 65101
+  redist:
+    ospf: true
+    ospfv3: true
+  neighbors:
+    ipv4:
+     - peer: 10.100.101.254
+       remote_as: 65430
+       ebgp: true
+       acl:
+         acl_index: 110
+     - peer: 192.0.2.201
+       remote_as: 65101
+       ibgp: true
+       update_source: Loopback0
+       default_originate: true
+    ipv6:
+     - peer: "2001:db8:101::ffff"
+       remote_as: 65430
+       ebgp: true
+       acl:
+         acl_index: 110
+     - peer: "2001:db8:901:beef::2"
+       remote_as: 65101
+       ibgp: true
+       update_source: Loopback0
+interfaces:
+  - ios_if: "GigabitEthernet0/0"
+    desc: "Management"
+    enabled: true
+    ipv4: "10.15.30.23/24"
+  - ios_if: "GigabitEthernet0/1"
+    desc: "VLAN Bridge"
+    enabled: true
+    subint:
+      vlans:
+      - 101
+      - 201
+  - ios_if: "GigabitEthernet0/1.101"
+    desc: "To netsvr"
+    enabled: true
+    ipv4: "10.100.101.253/24"
+    ipv6: "2001:db8:101::f/64"
+    acl:
+      ipv4:
+        in: EDGE-IN
+        out: EDGE-OUT
+      ipv6:
+        in: EDGEv6-IN
+        out: EDGEv6-OUT
+    ospf:
+      area: "0.0.0.0"
+      passive: true
+    ospfv3:
+      area: "0.0.0.0"
+      passive: true
+  - ios_if: "GigabitEthernet0/1.201"
+    desc: "To cisco-02"
+    enabled: true
+    ipv4: "10.100.201.254/24"
+    ipv6: "2001:db8:201::a/64"
+    ospf:
+      area: "0.0.0.0"
+    ospfv3:
+      area: "0.0.0.0"
+    nat:
+      role: inside
+  - ios_if: "GigabitEthernet0/2"
+    desc: "To the Internet"
+    enabled: true
+    ipv4: "dhcp"
+    nat:
+      role: outside
+  - ios_if: "loopback0"
+    desc: "Loopback"
+    enabled: true
+    ipv4: "192.168.6.1/24"
+    ipv6: "2001:db8:CAFE:6::1/64"
+    ospf:
+      area: "0.0.0.0"
+      passive: true
+    ospfv3:
+      area: "0.0.0.0"
+      passive: true
+  - ios_if: "loopback1"
+    desc: "Loopback"
+    enabled: true
+    ipv4: "192.168.1.1/24"
+    ipv6: "2001:db8:CAFE:1::1/64"
+    ospf:
+      area: "0.0.0.0"
+      passive: true
+    ospfv3:
+      area: "0.0.0.0"
+      passive: true
+
+  
