@@ -24,7 +24,7 @@ interfaces:
     ospfv3:
       area: "0.0.0.0"
 
-  - ios_if: "GigabitEthernet0/1"
+  - ios_if: "GigabitEthernet0/2"
     desc: "To R3"
     enabled: true
     ipv4: "192.168.4.1/30"
