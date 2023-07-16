@@ -17,10 +17,10 @@ bgp:
 #R3 interfaces
 interfaces:
   - ios_if: "GigabitEthernet0/0"
-    desc: "Management"
+    desc: "To R2"
     enabled: true
-    ipv4: "192.168.4.1/32"
-    ipv6: "2001:db8:cafe::5/64"
+    ipv4: "192.168.4.2/30"
+    ipv6: "2001:db8:cafe:4::2/64"
     ospf:
       area: "0.0.0.0"
     ospfv3:
@@ -30,7 +30,7 @@ interfaces:
     desc: "To ISP"
     enabled: true
     ipv4: "192.168.77.2/24"
-    ipv6: "2001:db8:cafe::5/64"
+    ipv6: "2001:db8:cafe:77::2/64"
     ospf:
       area: "0.0.0.0"
     ospfv3:

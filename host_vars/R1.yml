@@ -10,8 +10,6 @@ bgp:
      - peer: 10.100.101.254
        remote_as: 65430
        ebgp: true
-       acl:
-         acl_index: 110
      - peer: 192.0.2.201
        remote_as: 65101
        ibgp: true
@@ -19,10 +17,9 @@ bgp:
        default_originate: true
     ipv6:
      - peer: "2001:db8:101::ffff"
-       remote_as: 65430
+       remote_as: 65001
        ebgp: true
-       acl:
-         acl_index: 110
+
      - peer: "2001:db8:901:beef::2"
        remote_as: 65101
        ibgp: true
@@ -31,49 +28,22 @@ interfaces:
   - ios_if: "GigabitEthernet0/0"
     desc: "Management"
     enabled: true
-    ipv4: "10.15.30.23/24"
+    ipv4: "192.168.10.1/30"
+
+
   - ios_if: "GigabitEthernet0/1"
-    desc: "VLAN Bridge"
+    desc: "To R2"
     enabled: true
-    subint:
-      vlans:
-      - 101
-      - 201
-  - ios_if: "GigabitEthernet0/1.101"
-    desc: "To netsvr"
-    enabled: true
-    ipv4: "10.100.101.253/24"
-    ipv6: "2001:db8:101::f/64"
-    acl:
-      ipv4:
-        in: EDGE-IN
-        out: EDGE-OUT
-      ipv6:
-        in: EDGEv6-IN
-        out: EDGEv6-OUT
+    ipv4: "192.168.2.1/24"
+    ipv6: "2001:db8:cafe:2::1/64"
+
     ospf:
       area: "0.0.0.0"
       passive: true
     ospfv3:
       area: "0.0.0.0"
       passive: true
-  - ios_if: "GigabitEthernet0/1.201"
-    desc: "To cisco-02"
-    enabled: true
-    ipv4: "10.100.201.254/24"
-    ipv6: "2001:db8:201::a/64"
-    ospf:
-      area: "0.0.0.0"
-    ospfv3:
-      area: "0.0.0.0"
-    nat:
-      role: inside
-  - ios_if: "GigabitEthernet0/2"
-    desc: "To the Internet"
-    enabled: true
-    ipv4: "dhcp"
-    nat:
-      role: outside
+
   - ios_if: "loopback0"
     desc: "Loopback"
     enabled: true
