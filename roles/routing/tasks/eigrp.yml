@@ -1,0 +1,36 @@
+# tasks file for EIGRP routing
+#
+- name: Enter EIGRP Process
+  ios_config:
+    lines:
+      - "router eigrp 10"
+    
+
+- name: EIGRP Network IPV4
+  ios_config:
+    lines: 
+      - " network {{ item.network}} {{item.mask}}"
+    parents: router eigrp 10
+  when:
+    - eigrp is defined
+    - eigrp.neighbors is defined
+    - eigrp.neighbors.ipv4 is defined
+  loop: "{{ eigrp.neighbors.ipv4 }}"
+  
+
+
+- name: EIGRP Redistribute to OSPF (if exists)
+  ios_config:
+    lines:
+      - resdistribute eigrp ospf {{ item.ospf.process}}
+      - resdistrubute eigrp 10 subnets
+    parents: router eigrp 10
+  when:
+    - eigrp is defined
+    - eigrp.ospf is defined
+    - eigrp.neighbors is defined
+    - eigrp.neighbors.ipv4 is defined
+  loop: "{{ eigrp.neighbors}}"
+
+
+
