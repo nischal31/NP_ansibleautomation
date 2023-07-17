@@ -1,2 +1,6 @@
 ---
 # tasks file for routing
+#EIGRP Routing
+- name: Include EIGRP routing
+  include: eigrp.yml
+
