@@ -2,7 +2,7 @@ router_id: 192.168.3.1
 #rtr_role: internal
 eigrp:
   ospf:
-    process: 1
+   - process: 1
   neighbors:
     ipv4:
      - network: 192.168.2.0
