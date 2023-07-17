@@ -1,5 +1,5 @@
 router_id: 192.168.99.1
-rtr_role: internal
+#rtr_role: internal
 bgp:
   local_as: 65100
   neighbors:
@@ -22,18 +22,9 @@ interfaces:
     enabled: true
     ipv4: "192.168.77.1/24"
     ipv6: "2001:db8:cafe:77::1/64"
-    ospf:
-      area: "0.0.0.0"
-    ospfv3:
-      area: "0.0.0.0"
+
   - ios_if: "loopback0"
     desc: "Loopback"
     enabled: true
     ipv4: "192.168.99.1/24"
     ipv6: "2001:db8:cafe:99::1/64"
-    ospf:
-      area: "0.0.0.0"
-      passive: true
-    ospfv3:
-      area: "0.0.0.0"
-      passive: true

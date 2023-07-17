@@ -1,5 +1,36 @@
 router_id: 192.168.1.1
-rtr_role: edge
+#rtr_role: edge
+eigrp:
+#EIGRP Network Lo1
+  neighbors:
+    ipv4:
+     - network: 192.168.1.0
+       mask: 65101
+    
+    ipv6:
+     - peer: "2001:db8:901:beef::1"
+       remote_as: 65101
+  #Eigrp network  R1 n R2
+  neighbors:
+    ipv4:
+     - network: 192.168.2.0
+       mask: 0.0.0.3
+
+    ipv6:
+     - peer: "2001:db8:901:beef::1"
+       remote_as: 65101
+       
+  #EIGRP network Loop0
+  neighbors:
+    ipv4:
+     - network: 192.168.6.0
+       mask: 0.0.0.3
+       
+    ipv6:
+     - peer: "2001:db8:901:beef::1"
+       remote_as: 65101
+    
+#BGP Attributes
 bgp:
   local_as: 65101
   redist:
@@ -37,34 +68,17 @@ interfaces:
     ipv4: "192.168.2.1/24"
     ipv6: "2001:db8:cafe:2::1/64"
 
-    ospf:
-      area: "0.0.0.0"
-      passive: true
-    ospfv3:
-      area: "0.0.0.0"
-      passive: true
-
   - ios_if: "loopback0"
     desc: "Loopback"
     enabled: true
     ipv4: "192.168.6.1/24"
     ipv6: "2001:db8:cafe:6::1/64"
-    ospf:
-      area: "0.0.0.0"
-      passive: true
-    ospfv3:
-      area: "0.0.0.0"
-      passive: true
+
   - ios_if: "loopback1"
     desc: "Loopback"
     enabled: true
     ipv4: "192.168.1.1/24"
     ipv6: "2001:db8:cafe:1::1/64"
-    ospf:
-      area: "0.0.0.0"
-      passive: true
-    ospfv3:
-      area: "0.0.0.0"
-      passive: true
+
 
   
