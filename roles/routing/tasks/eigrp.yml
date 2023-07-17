@@ -22,15 +22,15 @@
 - name: EIGRP Redistribute to OSPF (if exists)
   ios_config:
     lines:
-      - resdistribute eigrp ospf {{ item.ospf.process}}
-      - resdistrubute eigrp 10 subnets
+      - "redistribute eigrp ospf {{ item.process}} 1 1 1 1 1""
+      - "redistrubute eigrp 10 subnets"
     parents: router eigrp 10
   when:
     - eigrp is defined
-    - eigrp.ospf is defined
     - eigrp.neighbors is defined
     - eigrp.neighbors.ipv4 is defined
-  loop: "{{ eigrp.neighbors}}"
+    - eigrp.ospf is defined
+  loop: "{{ eigrp.ospf}}"
 
 
 
