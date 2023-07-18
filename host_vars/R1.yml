@@ -8,7 +8,7 @@ eigrp:
        mask: 65101
     
     ipv6:
-     - peer: "2001:db8:901:beef::1"
+     - peer: "2001:db8:cafe:1::0"
        remote_as: 65101
   #Eigrp network  R1 n R2
   neighbors:
@@ -17,7 +17,7 @@ eigrp:
        mask: 0.0.0.3
 
     ipv6:
-     - peer: "2001:db8:901:beef::1"
+     - peer: "2001:db8:cafe:2::0"
        remote_as: 65101
        
   #EIGRP network Loop0
@@ -27,7 +27,7 @@ eigrp:
        mask: 0.0.0.3
        
     ipv6:
-     - peer: "2001:db8:901:beef::1"
+     - peer: "2001:db8:cafe:6::0"
        remote_as: 65101
     
 
