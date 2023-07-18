@@ -2,10 +2,11 @@
 CI/CD pipeline for network automation using Ansible
 
 # Network Tasks on Roles directory
-a) Interface configurations (IPv4 and IPV6)
-b) OSPFV2 and OSPFV3 Routing (IPV4 and IPV6)
-c) BGP Routing (IPV4 and IPV6)
-d) EIGRP Routing
+a) Interface configurations (IPv4 and IPV6) <br />
+<br />
+b) OSPFV2 and OSPFV3 Routing (IPV4 and IPV6) <br /><br />
+c) BGP Routing (IPV4 and IPV6) <br /> <br />
+d) EIGRP Routing <br />
 
 # Jenkins compatibility
 The ansible code can be executed in Jenkins build job. The playbook  `all.yaml` executes all network automation tasks.
