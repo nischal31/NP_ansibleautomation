@@ -11,23 +11,6 @@ eigrp:
      - peer: "2001:db8:901:beef::1"
        remote_as: 65101
 
-
-
-
-       
-bgp:
-  local_as: 65000
-  neighbors:
-    ipv4:
-     - peer: 192.168.2.101
-       remote_as: 65101
-       ibgp: true
-       update_source: Loopback0
-    ipv6:
-     - peer: "2001:db8:901:beef::1"
-       remote_as: 65101
-       ibgp: true
-       update_source: Loopback0
 interfaces:
   - ios_if: "GigabitEthernet0/0"
     desc: "To R1"
