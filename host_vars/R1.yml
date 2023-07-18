@@ -30,31 +30,7 @@ eigrp:
      - peer: "2001:db8:901:beef::1"
        remote_as: 65101
     
-#BGP Attributes
-bgp:
-  local_as: 65101
-  redist:
-    ospf: true
-    ospfv3: true
-  neighbors:
-    ipv4:
-     - peer: 10.100.101.254
-       remote_as: 65430
-       ebgp: true
-     - peer: 192.0.2.201
-       remote_as: 65101
-       ibgp: true
-       update_source: Loopback0
-       default_originate: true
-    ipv6:
-     - peer: "2001:db8:101::ffff"
-       remote_as: 65001
-       ebgp: true
 
-     - peer: "2001:db8:901:beef::2"
-       remote_as: 65101
-       ibgp: true
-       update_source: Loopback0
 interfaces:
   - ios_if: "GigabitEthernet0/0"
     desc: "Management"
