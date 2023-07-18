@@ -4,3 +4,14 @@
 - name: Include EIGRP routing
   include: eigrp.yml
 
+- name: Include OSPF routing
+  include: ospf.yml
+
+- name: Include OSPFv3 routing
+  include: ospfv3.yml
+
+- name: Include BGP routing
+  include: bgp.yml
+
+
+
