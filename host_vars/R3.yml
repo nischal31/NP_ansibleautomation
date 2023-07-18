@@ -4,14 +4,14 @@ bgp:
   local_as: 65000
   neighbors:
     ipv4:
-     - peer: 192.168.2.101
+     - peer: 192.168.77.1
        remote_as: 65001
-       ibgp: true
+       ebgp: true
        update_source: Loopback0
     ipv6:
-     - peer: "2001:db8:901:beef::1"
+     - peer: "2001:db8:feed:77::1"
        remote_as: 65101
-       ibgp: true
+       ebgp: true
        update_source: Loopback0
 
 #R3 interfaces
@@ -30,7 +30,7 @@ interfaces:
     desc: "To ISP"
     enabled: true
     ipv4: "192.168.77.2/24"
-    ipv6: "2001:db8:cafe:77::2/64"
+    ipv6: "2001:db8:feed:77::2/64"
   
 
   

@@ -4,12 +4,12 @@ bgp:
   local_as: 65100
   neighbors:
     ipv4:
-     - peer: 192.168.99.1
+     - peer: 192.168.77.2
        remote_as: 65000
        ebgp: true
        update_source: Loopback0
     ipv6:
-     - peer: "2001:db8:99:1::1/64"
+     - peer: "2001:db8:feed:77::2"
        remote_as: 65000
        ebgp: true
        update_source: Loopback0
@@ -21,10 +21,10 @@ interfaces:
     desc: "To R3"
     enabled: true
     ipv4: "192.168.77.1/24"
-    ipv6: "2001:db8:cafe:77::1/64"
+    ipv6: "2001:db8:feed:77::1/64"
 
   - ios_if: "loopback0"
     desc: "Loopback"
     enabled: true
     ipv4: "192.168.99.1/24"
-    ipv6: "2001:db8:cafe:99::1/64"
+    ipv6: "2001:db8:99:1::1/64"
