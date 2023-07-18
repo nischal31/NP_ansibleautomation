@@ -32,8 +32,8 @@
     - item.ospfv3.passive is defined
   loop: "{{ interfaces }}"
 
-- name: Removed IPv4 address family
-  ios_config:
-    lines:
-      - "no address-family ipv4 unicast"
-    parents: router ospfv3 1
+# - name: Removed IPv4 address family
+#   ios_config:
+#     lines:
+#       - "no address-family ipv4 unicast"
+#     parents: router ospfv3 1
