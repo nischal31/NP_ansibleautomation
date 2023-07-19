@@ -1,6 +1,9 @@
 router_id: 192.168.5.1
 #rtr_role: internal
 bgp:
+  redist:
+    ospf: true
+    ospfv3: true
   local_as: 65000
   neighbors:
     ipv4:
