@@ -13,5 +13,5 @@ The ansible code can be executed in Jenkins build job. The playbook  `all.yaml` 
 
 # Running a code
 On terminal type
-`ansible-playbook all.yaml --ask-vault-passs` 
+`ansible-playbook all.yaml --ask-vault-pass` 
 
