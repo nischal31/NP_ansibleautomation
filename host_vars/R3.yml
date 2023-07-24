@@ -8,12 +8,12 @@ bgp:
   neighbors:
     ipv4:
      - peer: 192.168.77.1
-       remote_as: 65001
+       remote_as: 65100
        ebgp: true
        update_source: Loopback0
     ipv6:
      - peer: "2001:db8:feed:77::1"
-       remote_as: 65001
+       remote_as: 65100
        ebgp: true
        update_source: Loopback0
 
