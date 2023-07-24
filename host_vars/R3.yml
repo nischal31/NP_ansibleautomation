@@ -13,7 +13,7 @@ bgp:
        update_source: Loopback0
     ipv6:
      - peer: "2001:db8:feed:77::1"
-       remote_as: 65101
+       remote_as: 65001
        ebgp: true
        update_source: Loopback0
 
