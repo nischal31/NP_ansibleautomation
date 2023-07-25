@@ -17,7 +17,7 @@
     - eigrp.neighbors.ipv4 is defined
   loop: "{{ eigrp.neighbors.ipv4 }}"
   
-  - name: EIGRP Network IPV6
+- name: EIGRP Network IPV6
   ios_config:
     lines: 
       - " ipv6 eigrp {{ item.eigrp.as}} "
