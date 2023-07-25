@@ -32,9 +32,10 @@
 - name: Redistrubute BGP Routes into OSPF
   ios_config:
     lines:
-      - redistribute bgp {{ item.local_as }} subnets
+      - redistribute bgp {{bgp['local_as'] }} subnets
     parents: router ospf 1
   when: 
+    - bgp.ospf is defined
     - item.redist.ospf is defined
   loop: "{{ bgp }}"
 
