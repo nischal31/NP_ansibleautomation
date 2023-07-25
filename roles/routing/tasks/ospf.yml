@@ -29,7 +29,7 @@
     - item.ospf.passive is defined
   loop: "{{ interfaces }}"
 
-  - name: Redistrubute BGP Routes into OSPF
+- name: Redistrubute BGP Routes into OSPF
   ios_config:
     lines:
       - redistribute bgp {{ local_as }} subnets
