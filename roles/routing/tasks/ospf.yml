@@ -36,6 +36,6 @@
     parents: router ospf 1
   when: 
     - bgp.ospf is defined
-    - item.redist.ospf is defined
+    - bgp.redist.ospf is defined
   loop: "{{ bgp }}"
 
