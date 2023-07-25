@@ -17,6 +17,16 @@
     - eigrp.neighbors.ipv4 is defined
   loop: "{{ eigrp.neighbors.ipv4 }}"
   
+  - name: EIGRP Network IPV6
+  ios_config:
+    lines: 
+      - " ipv6 eigrp {{ item.eigrp.as}} "
+    parents: "interface {{item.ios_if}}"
+  when:
+    - eigrp is defined
+    - interface.eigrp is defined
+    - ipv6 is defined
+  loop: "{{interfaces}}"
 
 - name: EIGRP Redistribute to OSPF (if exists)
   ios_config:

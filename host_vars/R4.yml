@@ -1,5 +1,5 @@
 router_id: 192.168.99.1
-#rtr_role: internal
+
 bgp:
   local_as: 65100
   neighbors:

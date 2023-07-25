@@ -1,5 +1,4 @@
 router_id: 192.168.5.1
-#rtr_role: internal
 bgp:
   redist:
     ospf: true
