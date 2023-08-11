@@ -31,7 +31,7 @@
 - name: EIGRP Redistribute to OSPF (if exists)
   ios_config:
     lines:
-      - "redistribute ospf {{ item.process}} subnets"
+      - "redistribute ospf {{ item.process}} subnets "
     parents: router eigrp 10
   when:
     - eigrp is defined
